@@ -39,6 +39,8 @@ namespace CommonLibraryB_NXP.Library.PLC.Property
 
         public ushort missionFinish { get; set; }
 
+        public string barcode { get; set; }
+
         public ushort boardSize { get; set; }
 
         public ushort pickZone { get; set; }
