@@ -24,6 +24,8 @@ namespace CommonLibraryB_NXP.Library.PLC.Property
         public ushort missionStart { get; set; }
 
         public ushort missionFinish { get; set; }
+
+        public ushort heartBeat { get; set; }
     }
 
     public class GetPierProperty
@@ -31,6 +33,8 @@ namespace CommonLibraryB_NXP.Library.PLC.Property
         public string pierName { get; set; } = string.Empty;
 
         public ushort missionStatus { get; set; }
+
+        public int isReset { get; set; }
     }
 
     public class SetRobotProperty
@@ -50,6 +54,8 @@ namespace CommonLibraryB_NXP.Library.PLC.Property
         public ushort dropZone { get; set; }
 
         public ushort dropLayer { get; set; }
+
+        public ushort heartBeat { get; set; }
     }
 
     public class GetRobotProperty
@@ -57,5 +63,7 @@ namespace CommonLibraryB_NXP.Library.PLC.Property
         public string robotName { get; set; } = string.Empty;
 
         public ushort missionStatus { get; set; }
+
+        public int isReset { get; set; }
     }
 }

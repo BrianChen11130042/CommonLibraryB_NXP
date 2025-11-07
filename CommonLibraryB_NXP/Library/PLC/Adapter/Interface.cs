@@ -39,5 +39,11 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
 
         //取得設備名稱
         Task<bool> GetDeviceName(T t);
+
+        //是否有復歸
+        Task<bool> GetDeviceIsReset(T t);
+
+        //心跳
+        Task<bool> SetHeartBeat(T t);
     }
 }

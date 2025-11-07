@@ -18,12 +18,22 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
 
     public partial class AdapterPier1 : IPlcOperate<PlcPackage>
     {
+        public Task<bool> GetDeviceIsReset(PlcPackage t)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<bool> GetDeviceName(PlcPackage t)
         {
             throw new NotImplementedException();
         }
 
         public Task<bool> GetPierStatus(PlcPackage t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> SetHeartBeat(PlcPackage t)
         {
             throw new NotImplementedException();
         }

@@ -106,5 +106,15 @@ namespace CommonLibraryB_NXP.Library.PLC
         {
             return await SelectAdapter(t).SetRobotMissionStart(Packages[t]);
         }
+
+        public async Task<bool> GetDeviceIsReset(T t)
+        {
+            return await SelectAdapter(t).GetDeviceIsReset(Packages[t]);
+        }
+
+        public async Task<bool> SetHeartBeat(T t)
+        {
+            return await SelectAdapter(t).SetHeartBeat(Packages[t]);
+        }
     }
 }
