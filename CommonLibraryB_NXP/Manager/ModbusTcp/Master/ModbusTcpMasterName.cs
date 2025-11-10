@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CommonLibraryB.Manager.ModbusTcp.Master
+namespace CommonLibraryB_NXP.Manager.ModbusTcp.Master
 {
     public enum EModbusTcpMaster
     {

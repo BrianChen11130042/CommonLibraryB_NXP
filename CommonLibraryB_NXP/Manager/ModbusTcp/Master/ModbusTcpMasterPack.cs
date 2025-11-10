@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NModbus;
 
-namespace CommonLibraryB.Manager.ModbusTcp.Master
+namespace CommonLibraryB_NXP.Manager.ModbusTcp.Master
 {
 
     public class ModbusTcpMasterPack

@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace CommonLibraryB.Tools.ObjectSaveLoader
+namespace CommonLibraryB_NXP.Tools.ObjectSaveLoader
 {
     public enum EErrorObjectSaveLoader { NoError, LoadException, LoadFileNotExist, SaveException }
 

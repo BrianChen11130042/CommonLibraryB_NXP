@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CommonLibraryB.Tools.TypeConverter
+namespace CommonLibraryB_NXP.Tools.TypeConverter
 {
     public enum EEndian
     {

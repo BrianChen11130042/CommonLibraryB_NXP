@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CommonLibraryB.Base.Adapter;
+using CommonLibraryB_NXP.Base.Adapter;
 using CommonLibraryB_NXP.Library.PLC.Config;
 
 namespace CommonLibraryB_NXP.Library.PLC.Adapter

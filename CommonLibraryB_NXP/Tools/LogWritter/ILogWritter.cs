@@ -5,7 +5,7 @@ using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CommonLibraryB.Tools.LogWritter
+namespace CommonLibraryB_NXP.Tools.LogWritter
 {
     public interface INLogWritterObservable
     {

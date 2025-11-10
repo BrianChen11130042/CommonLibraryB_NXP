@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using NLog;
 using NLog.Web;
 
-namespace CommonLibraryB.Tools.LogWritter
+namespace CommonLibraryB_NXP.Tools.LogWritter
 {
     public enum EStatus
     {

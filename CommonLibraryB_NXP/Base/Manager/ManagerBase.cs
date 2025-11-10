@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CommonLibraryB.Tools.ObjectSaveLoader;
+using CommonLibraryB_NXP.Tools.ObjectSaveLoader;
 
-namespace CommonLibraryB.Base.Manager
+namespace CommonLibraryB_NXP.Base.Manager
 {
     public enum EErrorManager { NoError, Exception, WrongQuantity, FileNotExist }
 

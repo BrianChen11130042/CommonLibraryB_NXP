@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CommonLibraryB.Base.FiniteStateMachine
+namespace CommonLibraryB_NXP.Base.FiniteStateMachine
 {
     public enum ES1
     {

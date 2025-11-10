@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CommonLibraryB.Base.Manager;
+using CommonLibraryB_NXP.Base.Manager;
 
-namespace CommonLibraryB.Manager.ModbusTcp.Master
+namespace CommonLibraryB_NXP.Manager.ModbusTcp.Master
 {
     public class ModbusTcpMasterManager : ManagerBase<EModbusTcpMaster, ModbusTcpMasterConfig>
     {

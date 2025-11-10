@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CommonLibraryB.Manager.ModbusTcp.Master;
+using CommonLibraryB_NXP.Manager.ModbusTcp.Master;
 using CommonLibraryB_NXP.Library.PLC.Adapter;
 
 namespace CommonLibraryB_NXP.Library.PLC.Config
