@@ -33,9 +33,9 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
             throw new NotImplementedException();
         }
 
-        public Task<bool> SetHeartBeat(PlcPackage t)
+        public async Task<bool> SetHeartBeat(PlcPackage t)
         {
-            throw new NotImplementedException();
+            return false;
         }
 
         public Task<bool> SetRobotMissionFinsih(PlcPackage t)
