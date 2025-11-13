@@ -13,44 +13,100 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
 
     public partial class AdapterTMRobotArm
     {
+        enum ESetOperate
+        {
+            HeartBeat,
 
+        }
+
+        void getCmd(ESetOperate operate, PlcPackage t)
+        {
+            switch(operate)
+            {
+                case ESetOperate.HeartBeat:
+                    cmdHeartBeat(t);
+                    break;
+            }
+        }
+
+        void cmdHeartBeat(PlcPackage t)
+        {
+            ushort[] temp = new ushort[1];
+            temp[0] = t.property.setRobot.heartBeat;
+
+            t.arrayCmd = temp;
+            t.station = 1;
+            t.startAddress = 1203;
+            t.offset = 1;
+        }
     }
 
     public partial class AdapterTMRobotArm : IPlcOperate<PlcPackage>
     {
-        public Task<bool> GetDeviceIsReset(PlcPackage t)
+        public async Task<bool> GetDeviceIsReset(PlcPackage t)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
-        public Task<bool> GetDeviceName(PlcPackage t)
+        public async Task<bool> GetDeviceName(PlcPackage t)
         {
-            throw new NotImplementedException();
+            t.property.getPier.pierName = "Robot";
+            return true;
         }
 
-        public Task<bool> GetRobotStatus(PlcPackage t)
+        public async Task<bool> GetRobotStatus(PlcPackage t)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public async Task<bool> SetHeartBeat(PlcPackage t)
         {
-            return false;
+            try
+            {
+                if(t.master == null)
+                {
+                    setModbusTcpError();
+                }
+
+                getCmd(ESetOperate.HeartBeat, t);
+                await setMultiRegisterAsync(t);
+
+                return true;
+            }
+            catch(Exception ex)
+            {
+                t.errorLog = ex.Message;
+                return false;
+            }
         }
 
-        public Task<bool> SetRobotMissionFinsih(PlcPackage t)
+        public async Task<bool> SetRobotMissionFinsih(PlcPackage t)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
-        public Task<bool> SetRobotMissionInform(PlcPackage t)
+        public async Task<bool> SetRobotMissionInform(PlcPackage t)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
-        public Task<bool> SetRobotMissionStart(PlcPackage t)
+        public async Task<bool> SetRobotMissionStart(PlcPackage t)
         {
-            throw new NotImplementedException();
+            return true;
+        }
+    }
+
+    public partial class AdapterTMRobotArm
+    {
+        void setModbusTcpError()
+        {
+            throw new InvalidOperationException("Modbus Tcp Disconnect");
+        }
+
+        async Task setMultiRegisterAsync(PlcPackage t)
+        {
+            //write multi register
+            await t.master.WriteMultipleRegistersAsync((byte)t.station, (ushort)t.startAddress, t.arrayCmd);
         }
     }
 

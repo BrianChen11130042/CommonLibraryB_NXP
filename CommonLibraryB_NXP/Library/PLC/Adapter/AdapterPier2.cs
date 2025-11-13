@@ -18,34 +18,35 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
 
     public partial class AdapterPier2 : IPlcOperate<PlcPackage>
     {
-        public Task<bool> GetDeviceIsReset(PlcPackage t)
+        public async Task<bool> GetDeviceIsReset(PlcPackage t)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
-        public Task<bool> GetDeviceName(PlcPackage t)
+        public async Task<bool> GetDeviceName(PlcPackage t)
         {
-            throw new NotImplementedException();
+            t.property.getPier.pierName = "Pier2";
+            return true;
         }
 
-        public Task<bool> GetPierStatus(PlcPackage t)
+        public async Task<bool> GetPierStatus(PlcPackage t)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
-        public Task<bool> SetHeartBeat(PlcPackage t)
+        public async Task<bool> SetHeartBeat(PlcPackage t)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
-        public Task<bool> SetPierMissionFinish(PlcPackage t)
+        public async Task<bool> SetPierMissionFinish(PlcPackage t)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
-        public Task<bool> SetPierMissionStart(PlcPackage t)
+        public async Task<bool> SetPierMissionStart(PlcPackage t)
         {
-            throw new NotImplementedException();
+            return true;
         }
     }
 
