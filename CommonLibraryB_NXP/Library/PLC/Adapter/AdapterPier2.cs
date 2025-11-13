@@ -13,11 +13,57 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
 
     public partial class AdapterPier2
     {
+        enum ESetOperate
+        {
+            HeartBeat,
 
+        }
+
+        void getCmd(ESetOperate operate, PlcPackage t)
+        {
+            switch (operate)
+            {
+                case ESetOperate.HeartBeat:
+                    cmdHeartBeat(t);
+                    break;
+            }
+        }
+
+        void cmdHeartBeat(PlcPackage t)
+        {
+            ushort[] temp = new ushort[1];
+            temp[0] = t.property.setPier.heartBeat;
+
+            t.arrayCmd = temp;
+            t.station = 1;
+            t.startAddress = 1203;
+            t.offset = 1;
+        }
     }
 
     public partial class AdapterPier2 : IPlcOperate<PlcPackage>
     {
+        public async Task<bool> SetHeartBeat(PlcPackage t)
+        {
+            try
+            {
+                if (t.master == null)
+                {
+                    setModbusTcpError();
+                }
+
+                getCmd(ESetOperate.HeartBeat, t);
+                await setMultiRegisterAsync(t);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                t.errorLog = ex.Message;
+                return false;
+            }
+        }
+
         public async Task<bool> GetDeviceIsReset(PlcPackage t)
         {
             return true;
@@ -34,11 +80,6 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
             return true;
         }
 
-        public async Task<bool> SetHeartBeat(PlcPackage t)
-        {
-            return true;
-        }
-
         public async Task<bool> SetPierMissionFinish(PlcPackage t)
         {
             return true;
@@ -47,6 +88,20 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
         public async Task<bool> SetPierMissionStart(PlcPackage t)
         {
             return true;
+        }
+    }
+
+    public partial class AdapterPier2
+    {
+        void setModbusTcpError()
+        {
+            throw new InvalidOperationException("Modbus Tcp Disconnect");
+        }
+
+        async Task setMultiRegisterAsync(PlcPackage t)
+        {
+            //write multi register
+            await t.master.WriteMultipleRegistersAsync((byte)t.station, (ushort)t.startAddress, t.arrayCmd);
         }
     }
 
