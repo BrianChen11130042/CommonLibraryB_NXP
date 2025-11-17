@@ -41,7 +41,7 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
         Task<bool> GetDeviceName(T t);
 
         //是否有復歸
-        Task<bool> GetDeviceIsReset(T t);
+        Task<bool> GetDeviceIsReady(T t);
 
         //心跳
         Task<bool> SetHeartBeat(T t);
