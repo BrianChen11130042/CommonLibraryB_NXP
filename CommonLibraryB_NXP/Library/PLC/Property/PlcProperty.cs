@@ -30,7 +30,7 @@ namespace CommonLibraryB_NXP.Library.PLC.Property
 
     public class GetPierProperty
     {
-        public string pierName { get; set; } = string.Empty;
+        public int pierNo { get; set; }
 
         public ushort missionStatus { get; set; }
 
@@ -60,7 +60,7 @@ namespace CommonLibraryB_NXP.Library.PLC.Property
 
     public class GetRobotProperty
     {
-        public string robotName { get; set; } = string.Empty;
+        public int robotNo { get; set; }
 
         public ushort missionStatus { get; set; }
 

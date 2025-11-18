@@ -67,9 +67,9 @@ namespace CommonLibraryB_NXP.Library.PLC
             return adapter[c.supplier];
         }
 
-        public async Task<bool> GetDeviceName(T t)
+        public async Task<bool> GetDeviceNo(T t)
         {
-            return await SelectAdapter(t).GetDeviceName(Packages[t]);
+            return await SelectAdapter(t).GetDeviceNo(Packages[t]);
         }
 
         public async Task<bool> SetPierMissionStart(T t)

@@ -8,7 +8,7 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
 {
     public partial class AdapterPier2
     {
-        const string name = "Pier2";
+        const int deviceNo = 2;
     }
 
     public partial class AdapterPier2
@@ -138,9 +138,9 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
 
     public partial class AdapterPier2 : IPlcOperate<PlcPackage>
     {
-        public async Task<bool> GetDeviceName(PlcPackage t)
+        public async Task<bool> GetDeviceNo(PlcPackage t)
         {
-            t.property.getPier.pierName = "Pier2";
+            t.property.getPier.pierNo = deviceNo;
             return true;
         }
 

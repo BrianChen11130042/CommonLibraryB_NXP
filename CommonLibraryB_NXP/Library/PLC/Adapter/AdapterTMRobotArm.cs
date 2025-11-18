@@ -9,7 +9,7 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
 {
     public partial class AdapterTMRobotArm
     {
-        const string name = "TMRobot";
+        const int deviceNo = 3;
     }
 
     public partial class AdapterTMRobotArm
@@ -169,9 +169,9 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
 
     public partial class AdapterTMRobotArm : IPlcOperate<PlcPackage>
     {
-        public async Task<bool> GetDeviceName(PlcPackage t)
+        public async Task<bool> GetDeviceNo(PlcPackage t)
         {
-            t.property.getRobot.robotName = "Robot";
+            t.property.getRobot.robotNo = deviceNo;
             return true;
         }
 

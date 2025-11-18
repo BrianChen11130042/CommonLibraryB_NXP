@@ -37,8 +37,8 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
 
         //******** COMMON ********//
 
-        //取得設備名稱
-        Task<bool> GetDeviceName(T t);
+        //取得設備編號
+        Task<bool> GetDeviceNo(T t);
 
         //是否有復歸
         Task<bool> GetDeviceIsReady(T t);
