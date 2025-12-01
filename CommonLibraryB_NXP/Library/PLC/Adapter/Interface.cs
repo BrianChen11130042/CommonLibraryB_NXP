@@ -45,5 +45,8 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
 
         //心跳
         Task<bool> SetHeartBeat(T t);
+
+        //倉儲狀態
+        Task<bool> GetWarehouse(T t);
     }
 }

@@ -116,5 +116,10 @@ namespace CommonLibraryB_NXP.Library.PLC
         {
             return await SelectAdapter(t).SetHeartBeat(Packages[t]);
         }
+
+        public async Task<bool> GetWarehouse(T t)
+        {
+            return await SelectAdapter(t).GetWarehouse(Packages[t]);
+        }
     }
 }

@@ -18,6 +18,7 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
         {
             DeviceReady,
             RobotStatus,
+            Warehouse
         }
 
         void getCmd(EGetOperate operate, PlcPackage t)
@@ -30,6 +31,10 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
 
                 case EGetOperate.RobotStatus:
                     cmdRobotStatus(t);
+                    break;
+
+                case EGetOperate.Warehouse:
+                    cmdWarehouse(t);
                     break;
             }
         }
@@ -47,6 +52,13 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
             t.startAddress = 1222;
             t.offset = 1;
         }
+
+        void cmdWarehouse(PlcPackage t)
+        {
+            t.station = 1;
+            t.startAddress = 100;
+            t.offset = 1000;
+        }
     }
 
     public partial class AdapterTMRobotArm
@@ -62,6 +74,10 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
                 case EGetOperate.RobotStatus:
                     upRobotStatus(t);
                     break;
+
+                case EGetOperate.Warehouse:
+                    upWarehouse(t);
+                    break;
             }
         }
 
@@ -73,6 +89,19 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
         void upRobotStatus(PlcPackage t)
         {
             t.property.getRobot.missionStatus = t.rcmd;
+        }
+
+        void upWarehouse(PlcPackage t)
+        {
+            Dictionary<int, bool> dcWh = new Dictionary<int, bool>();
+
+            for(int i = 36 ; i <= 493 ; i++)
+            {
+                dcWh.Add(i, t.arrayBoolRcmd[i - 36]);
+            }
+
+
+            t.property.getRobot.dcWarehouse = dcWh;
         }
     }
 
@@ -206,8 +235,13 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
                     setModbusTcpError();
                 }
 
-                getCmd(ESetOperate.HeartBeat, t);
-                await setMultiRegisterAsync(t);
+                ushort[] temp = new ushort[1];
+                temp[0] = t.property.setRobot.heartBeat;
+
+                int station = 1;
+                int startAddress = 1203;
+
+                await setMultiRegisterAsync(station, startAddress, temp, t);
 
                 return true;
             }
@@ -302,6 +336,32 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
                 return false;
             }
         }
+
+        public async Task<bool> GetWarehouse(PlcPackage t)
+        {
+            try
+            {
+                if(t.master == null)
+                {
+                    setModbusTcpError();
+                }
+
+                int station = 1;
+                int startAddress = 36;
+                int offset = 458;
+
+                await getMultiInputAsync(station, startAddress, offset, t);
+
+                unpack(EGetOperate.Warehouse, t);
+
+                return true;
+            }
+            catch(Exception ex)
+            {
+                t.errorLog = ex.Message;
+                return false;
+            }
+        }
     }
 
     public partial class AdapterTMRobotArm
@@ -317,9 +377,20 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
             await t.master.WriteMultipleRegistersAsync((byte)t.station, (ushort)t.startAddress, t.arrayCmd);
         }
 
+        async Task setMultiRegisterAsync(int station, int startAddress, ushort[] arrayCmd, PlcPackage t)
+        {
+            //write multi register
+            await t.master.WriteMultipleRegistersAsync((byte)station, (ushort)startAddress, arrayCmd);
+        }
+
         async Task getSingleRegisterAsync(PlcPackage t)
         {
             t.rcmd = (await t.master.ReadHoldingRegistersAsync((byte)t.station, (ushort)t.startAddress, (ushort)t.offset)).FirstOrDefault();
+        }
+
+        async Task getMultiInputAsync(int station, int startAddress, int offset, PlcPackage t)
+        {
+            t.arrayBoolRcmd = await t.master.ReadInputsAsync((byte)station, (ushort)startAddress, (ushort)offset);
         }
     }
 

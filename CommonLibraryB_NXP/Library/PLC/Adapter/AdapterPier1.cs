@@ -166,27 +166,6 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
             }
         }
 
-        public async Task<bool> SetHeartBeat(PlcPackage t)
-        {
-            try
-            {
-                if (t.master == null)
-                {
-                    setModbusTcpError();
-                }
-
-                getCmd(ESetOperate.HeartBeat, t);
-                await setMultiRegisterAsync(t);
-
-                return true;
-            }
-            catch (Exception ex)
-            {
-                t.errorLog = ex.Message;
-                return false;
-            }
-        }
-
         public async Task<bool> SetPierMissionStart(PlcPackage t)
         {
             try
@@ -273,6 +252,16 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
 
     public partial class AdapterPier1
     {
+        public async Task<bool> GetWarehouse(PlcPackage t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<bool> SetHeartBeat(PlcPackage t)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<bool> GetRobotStatus(PlcPackage t)
         {
             throw new NotImplementedException();

@@ -37,11 +37,6 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
             return true;
         }
 
-        public async Task<bool> SetHeartBeat(PlcPackage t)
-        {
-            return true;
-        }
-
         public async Task<bool> SetPierMissionStart(PlcPackage t)
         {
             missionAction = t.property.setPier.missionStart;
@@ -63,6 +58,16 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
 
     public partial class AdapterPier1_Stub
     {
+        public async Task<bool> GetWarehouse(PlcPackage t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<bool> SetHeartBeat(PlcPackage t)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<bool> GetRobotStatus(PlcPackage t)
         {
             throw new NotImplementedException();

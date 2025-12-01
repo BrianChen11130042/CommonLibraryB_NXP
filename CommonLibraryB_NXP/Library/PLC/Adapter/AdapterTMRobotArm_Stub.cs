@@ -50,6 +50,11 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
         {
             return true;
         }
+
+        public async Task<bool> GetWarehouse(PlcPackage t)
+        {
+            return true;
+        }
     }
 
     public partial class AdapterTMRobotArm_Stub
