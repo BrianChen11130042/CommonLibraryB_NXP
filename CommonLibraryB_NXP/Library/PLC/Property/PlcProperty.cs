@@ -66,6 +66,6 @@ namespace CommonLibraryB_NXP.Library.PLC.Property
 
         public int isReady { get; set; }
 
-        public Dictionary<int, bool> dcWarehouse { get; set; }
+        public Dictionary<int, bool> dcWarehouse { get; set; } = new Dictionary<int, bool>();
     }
 }
