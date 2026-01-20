@@ -13,7 +13,7 @@ namespace CommonLibraryB_NXP.Library.PLC.Config
         public string Directory { get; set; }
         public const string fileName = "PlcConfig.json";
 
-        public PlcConfigManager(string dir) : base(dir + "Config\\" + fileName)
+        public PlcConfigManager(string dir) : base(dir + "MachineConfig\\" + fileName)
         {
             Directory = dir;
         }

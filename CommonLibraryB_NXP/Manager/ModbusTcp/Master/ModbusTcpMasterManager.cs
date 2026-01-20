@@ -12,7 +12,7 @@ namespace CommonLibraryB_NXP.Manager.ModbusTcp.Master
         public string Directory;
         public const string fileName = "ModbusTcpMasterConfig.json";
 
-        public ModbusTcpMasterManager(string dir) : base(dir + "Config\\" + fileName)
+        public ModbusTcpMasterManager(string dir) : base(dir + "MachineConfig\\" + fileName)
         {
             Directory = dir;
             Init();

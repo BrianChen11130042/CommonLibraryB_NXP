@@ -13,7 +13,7 @@ namespace CommonLibraryB_NXP.Library.PLC.Property
         public string Directory;
         public const string fileName = "PlcProperty.json";
 
-        public PlcPropertyManager(string dir):base(dir + "Property\\" + fileName)
+        public PlcPropertyManager(string dir):base(dir + "MachineProperty\\" + fileName)
         {
             Directory = dir;
         }
