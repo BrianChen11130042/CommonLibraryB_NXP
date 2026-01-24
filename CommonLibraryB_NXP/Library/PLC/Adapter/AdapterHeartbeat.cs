@@ -26,7 +26,7 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
         void cmdHeartBeat(PlcPackage t)
         {
             ushort[] temp = new ushort[1];
-            temp[0] = t.property.setRobot.heartBeat;
+            temp[0] = t.property.setHeartbeat.heartBeat;
 
             t.arrayCmd = temp;
             t.station = 1;

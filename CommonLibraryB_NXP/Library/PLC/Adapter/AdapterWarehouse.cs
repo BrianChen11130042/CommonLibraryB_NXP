@@ -53,7 +53,7 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
             }
 
 
-            t.property.getRobot.dcWarehouse = dcWh;
+            t.property.getWarehouse.dcWarehouse = dcWh;
         }
     }
 

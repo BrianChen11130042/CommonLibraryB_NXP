@@ -17,6 +17,10 @@ namespace CommonLibraryB_NXP.Library.PLC.Property
         public SetRobotProperty setRobot { get; set; } = new SetRobotProperty();
         public GetRobotProperty getRobot { get; set; } = new GetRobotProperty();
 
+        public SetHeartbeatProperty setHeartbeat { get; set; } = new SetHeartbeatProperty();
+
+        public GetWarehouseProperty getWarehouse { get; set; } = new GetWarehouseProperty();
+
     }
 
     public class SetPierProperty
@@ -54,8 +58,6 @@ namespace CommonLibraryB_NXP.Library.PLC.Property
         public ushort dropZone { get; set; }
 
         public ushort dropLayer { get; set; }
-
-        public ushort heartBeat { get; set; }
     }
 
     public class GetRobotProperty
@@ -65,7 +67,15 @@ namespace CommonLibraryB_NXP.Library.PLC.Property
         public ushort missionStatus { get; set; }
 
         public int isReady { get; set; }
+    }
 
+    public class SetHeartbeatProperty
+    {
+        public ushort heartBeat { get; set; }
+    }
+
+    public class GetWarehouseProperty
+    {
         public Dictionary<int, bool> dcWarehouse { get; set; } = new Dictionary<int, bool>();
     }
 }
