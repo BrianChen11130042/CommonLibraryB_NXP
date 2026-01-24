@@ -25,11 +25,6 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
             return true;
         }
 
-        public async Task<bool> SetHeartBeat(PlcPackage t)
-        {
-            return true;
-        }
-
         public async Task<bool> SetRobotMissionInform(PlcPackage t)
         {
             return true;
@@ -50,11 +45,6 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
         {
             return true;
         }
-
-        public async Task<bool> GetWarehouse(PlcPackage t)
-        {
-            return true;
-        }
     }
 
     public partial class AdapterTMRobotArm_Stub
@@ -70,6 +60,16 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
         }
 
         public Task<bool> SetPierMissionStart(PlcPackage t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> GetWarehouse(PlcPackage t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> SetHeartBeat(PlcPackage t)
         {
             throw new NotImplementedException();
         }

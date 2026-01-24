@@ -8,7 +8,8 @@ using CommonLibraryB_NXP.Library.PLC.Config;
 
 namespace CommonLibraryB_NXP.Library.PLC.Adapter
 {
-    public enum EPlcSupplier { TM_Pier1, TM_Pier1_Stub, TM_Pier2, TM_Pier2_Stub, TM_RobotArm, TM_RobotArm_Stub }
+    public enum EPlcSupplier { TM_Pier1, TM_Pier1_Stub, TM_Pier2, TM_Pier2_Stub, TM_RobotArm, TM_RobotArm_Stub,
+                               TM_Warehouse, TM_Warehouse_Stub, TM_Heartbeat, TM_Heartbeat_Stub}
 
     public class PlcAdapter : AdapterBase<PlcConfig, EPlcSupplier, IPlcOperate<PlcPackage>>
     {
@@ -50,6 +51,22 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
 
                     case EPlcSupplier.TM_RobotArm_Stub:
                         table.Add(supplier, new AdapterTMRobotArm_Stub());
+                        break;
+
+                    case EPlcSupplier.TM_Warehouse:
+                        table.Add(supplier, new AdapterWarehouse());
+                        break;
+
+                    case EPlcSupplier.TM_Warehouse_Stub:
+                        table.Add(supplier, new AdapterWarehouse_Stub());
+                        break;
+
+                    case EPlcSupplier.TM_Heartbeat:
+                        table.Add(supplier, new AdapterHeartbeat());
+                        break;
+
+                    case EPlcSupplier.TM_Heartbeat_Stub:
+                        table.Add(supplier, new AdapterHeartbeat_Stub());
                         break;
                 }
             }

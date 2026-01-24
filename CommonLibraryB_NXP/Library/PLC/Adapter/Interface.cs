@@ -35,6 +35,19 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
         //設置Robot任務結束
         Task<bool> SetRobotMissionFinsih(T t);
 
+
+        //******** Warehouse ********//
+
+        //倉儲狀態
+        Task<bool> GetWarehouse(T t);
+
+
+        //******** Heartbeat ********//
+
+        //心跳
+        Task<bool> SetHeartBeat(T t);
+
+
         //******** COMMON ********//
 
         //取得設備編號
@@ -42,11 +55,5 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
 
         //是否有復歸
         Task<bool> GetDeviceIsReady(T t);
-
-        //心跳
-        Task<bool> SetHeartBeat(T t);
-
-        //倉儲狀態
-        Task<bool> GetWarehouse(T t);
     }
 }
