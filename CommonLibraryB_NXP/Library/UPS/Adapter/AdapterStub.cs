@@ -14,11 +14,18 @@ namespace CommonLibraryB_NXP.Library.UPS.Adapter
 
     public partial class AdapterStub
     {
-
+        const int devoceNo = 4;
     }
 
     public partial class AdapterStub : IUpsOperate<UpsPackage>
     {
+        public async Task<bool> GetDeviceNo(UpsPackage t)
+        {
+            t.property.upsNo = devoceNo;
+
+            return true;
+        }
+
         public async Task<bool> GetUpsStatus(UpsPackage t)
         {
             t.property.InputVoltage = 0;

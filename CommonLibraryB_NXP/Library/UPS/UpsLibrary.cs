@@ -71,5 +71,10 @@ namespace CommonLibraryB_NXP.Library.UPS
         {
             return await SelectAdapter(t).GetUpsStatus(Packages[t]);
         }
+
+        public async Task<bool> GetDeviceNo(T t)
+        {
+            return await SelectAdapter(t).GetDeviceNo(Packages[t]);
+        }
     }
 }

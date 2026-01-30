@@ -11,7 +11,7 @@ namespace CommonLibraryB_NXP.Library.UPS.Property
     {
         public string device { get; set; }
 
-
+        public int upsNo { get; set; }
 
         public float InputVoltage { get; set; } // 單位:V
 
