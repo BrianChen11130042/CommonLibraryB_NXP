@@ -26,23 +26,47 @@ namespace CommonLibraryB_NXP.Library.UPS.Adapter
             return true;
         }
 
-        public async Task<bool> GetUpsStatus(UpsPackage t)
+        public async Task<bool> GetTestUpsStatus(UpsPackage t)
         {
-            t.property.InputVoltage = 0;
-            t.property.InputFaultVoltage = 0;
-            t.property.OutputVoltage = 0;
+ 
             t.property.OutputLoad = 0;
-            t.property.InputFrequency = 0;
             t.property.BatteryVoltage = 0;
             t.property.Temperature = 0;
+            t.property.ChargeInStatus = 0;
+            t.property.RemainBatteryBackupTime = 0;
 
-            t.property.UtilityFail = 1;
-            t.property.BatteryLow = 1;
-            t.property.BypassBoostActive = 1;
-            t.property.UpsFault = 1;
-            t.property.UpsType = 1;
-            t.property.TestInProgress = 1;
-            t.property.ShutdownActive = 1;
+            t.property.UtilityFail = 0;
+            t.property.BatteryLow = 0;
+            t.property.BypassBoostActive = 0;
+            t.property.UpsFailed = 0;
+            t.property.UpsType = 0;
+            t.property.TestInProcess = 0;
+            t.property.ShutdownActive = 0;
+
+            return true;
+        }
+
+        public async Task<bool> InitDevice(UpsPackage t)
+        {
+
+            return true;
+        }
+
+        public async Task<bool> GetUpsStatus(UpsPackage t)
+        {
+            t.property.OutputLoad = 0;
+            t.property.BatteryVoltage = 0;
+            t.property.Temperature = 0;
+            t.property.ChargeInStatus = 0;
+            t.property.RemainBatteryBackupTime = 0;
+
+            t.property.UtilityFail = 0;
+            t.property.BatteryLow = 0;
+            t.property.BypassBoostActive = 0;
+            t.property.UpsFailed = 0;
+            t.property.UpsType = 0;
+            t.property.TestInProcess = 0;
+            t.property.ShutdownActive = 0;
 
             return true;
         }

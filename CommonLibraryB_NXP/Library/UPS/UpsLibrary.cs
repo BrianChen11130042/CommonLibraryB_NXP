@@ -67,14 +67,24 @@ namespace CommonLibraryB_NXP.Library.UPS
             return adapter[c.supplier];
         }
 
-        public async Task<bool> GetUpsStatus(T t)
+        public async Task<bool> GetTestUpsStatus(T t)
         {
-            return await SelectAdapter(t).GetUpsStatus(Packages[t]);
+            return await SelectAdapter(t).GetTestUpsStatus(Packages[t]);
         }
 
         public async Task<bool> GetDeviceNo(T t)
         {
             return await SelectAdapter(t).GetDeviceNo(Packages[t]);
+        }
+
+        public async Task<bool> InitDevice(T t)
+        {
+            return await SelectAdapter(t).InitDevice(Packages[t]);
+        }
+
+        public async Task<bool> GetUpsStatus(T t)
+        {
+            return await SelectAdapter(t).GetUpsStatus(Packages[t]);
         }
     }
 }

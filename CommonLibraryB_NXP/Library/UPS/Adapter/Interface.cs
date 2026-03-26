@@ -8,7 +8,11 @@ namespace CommonLibraryB_NXP.Library.UPS.Adapter
 {
     public interface IUpsOperate<T>
     {
-        public Task<bool> GetUpsStatus(T t);
+        Task<bool> InitDevice(T t);
+
+        Task<bool> GetTestUpsStatus(T t);
+
+        Task<bool> GetUpsStatus(T t);
 
         Task<bool> GetDeviceNo(T t);
     }

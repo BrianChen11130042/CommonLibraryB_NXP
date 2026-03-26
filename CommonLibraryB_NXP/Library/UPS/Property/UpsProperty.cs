@@ -13,19 +13,17 @@ namespace CommonLibraryB_NXP.Library.UPS.Property
 
         public int upsNo { get; set; }
 
-        public float InputVoltage { get; set; } // 單位:V
 
-        public float InputFaultVoltage { get; set; } // 單位:V
 
-        public float OutputVoltage { get; set; } // 單位:V
+        public double OutputLoad { get; set; } // 單位:%
 
-        public float OutputLoad { get; set; } // 單位:%
+        public double BatteryVoltage { get; set; } // 單位:V
 
-        public float InputFrequency { get; set; } // 單位:Hz
+        public double Temperature { get; set; } // 單位: degrees of centigrade
 
-        public float BatteryVoltage { get; set; } // 單位:V
+        public double ChargeInStatus { get; set; } //單位:%
 
-        public float Temperature { get; set; } // 單位: degrees of centigrade
+        public double RemainBatteryBackupTime { get; set; } //單位:min
 
 
 
@@ -35,11 +33,11 @@ namespace CommonLibraryB_NXP.Library.UPS.Property
 
         public int BypassBoostActive { get; set; } // 1:UPS正在使用旁路模式或升壓模式  0:正常
 
-        public int UpsFault { get; set; } // 1:UPS故障  0:正常
+        public int UpsFailed { get; set; } // 1:UPS故障  0:正常
 
         public int UpsType { get; set; } // 1:Standby(離線式)  0:On-line (在線式)
 
-        public int TestInProgress { get; set; } // 1:正在進行自我檢查測試  0:不在測試狀態
+        public int TestInProcess { get; set; } // 1:正在進行自我檢查測試  0:不在測試狀態
 
         public int ShutdownActive { get; set; } // 1:UPS正在關機  0:沒有關機
     }
