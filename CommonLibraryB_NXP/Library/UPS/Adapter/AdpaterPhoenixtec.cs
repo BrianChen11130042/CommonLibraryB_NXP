@@ -322,7 +322,7 @@ namespace CommonLibraryB_NXP.Library.UPS.Adapter
 
                 t.port.Write(t.cmdStr);
 
-                await Task.Delay(2000);
+                await Task.Delay(100);
 
                 t.rcmdStr = t.port.ReadTo("\r");
 
