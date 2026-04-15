@@ -16,6 +16,7 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
         enum EGetOperate
         {
             DeviceReady,
+            DeviceError,
             PierStatus,
         }
 
@@ -27,6 +28,10 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
                     cmdDeviceReady(t);
                     break;
 
+                case EGetOperate.DeviceError:
+                    cmdDeviceError(t);
+                    break;
+
                 case EGetOperate.PierStatus:
                     cmdPierStatus(t);
                     break;
@@ -36,6 +41,13 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
             {
                 t.station = 1;
                 t.startAddress = 1223;
+                t.offset = 1;
+            }
+
+            void cmdDeviceError(PlcPackage t)
+            {
+                t.station = 1;
+                t.startAddress = 1225;
                 t.offset = 1;
             }
 
@@ -58,6 +70,10 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
                     upDeviceReady(t);
                     break;
 
+                case EGetOperate.DeviceError:
+                    upDeviceError(t);
+                    break;
+
                 case EGetOperate.PierStatus:
                     upPierStatus(t);
                     break;
@@ -67,6 +83,11 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
         void upDeviceReady(PlcPackage t)
         {
             t.property.getPier.isReady = t.rcmd;
+        }
+
+        void upDeviceError(PlcPackage t)
+        {
+            t.property.getPier.errorCode = t.rcmd;
         }
 
         void upPierStatus(PlcPackage t)
@@ -166,6 +187,28 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
             }
         }
 
+        public async Task<bool> GetDeviceIsError(PlcPackage t)
+        {
+            try
+            {
+                if (t.master == null)
+                {
+                    setModbusTcpError();
+                }
+
+                getCmd(EGetOperate.DeviceError, t);
+                await getSingleRegisterAsync(t);
+                unpack(EGetOperate.DeviceError, t);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                t.errorLog = ex.Message;
+                return false;
+            }
+        }
+
         public async Task<bool> SetPierMissionStart(PlcPackage t)
         {
             try
@@ -229,7 +272,6 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
                 return false;
             }
         }
-
     }
 
     public partial class AdapterPier2

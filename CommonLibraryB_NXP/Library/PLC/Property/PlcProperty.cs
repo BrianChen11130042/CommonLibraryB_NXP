@@ -39,6 +39,8 @@ namespace CommonLibraryB_NXP.Library.PLC.Property
         public ushort missionStatus { get; set; }
 
         public int isReady { get; set; }
+
+        public int errorCode { get; set; }
     }
 
     public class SetRobotProperty
@@ -67,6 +69,8 @@ namespace CommonLibraryB_NXP.Library.PLC.Property
         public ushort missionStatus { get; set; }
 
         public int isReady { get; set; }
+
+        public int errorCode { get; set; }
     }
 
     public class SetHeartbeatProperty

@@ -102,6 +102,11 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
             throw new NotImplementedException();
         }
 
+        public Task<bool> GetDeviceIsError(PlcPackage t)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<bool> GetDeviceNo(PlcPackage t)
         {
             throw new NotImplementedException();

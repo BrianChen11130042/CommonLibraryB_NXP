@@ -55,5 +55,8 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
 
         //是否有復歸
         Task<bool> GetDeviceIsReady(T t);
+
+        //是否有Error
+        Task<bool> GetDeviceIsError(T t);
     }
 }

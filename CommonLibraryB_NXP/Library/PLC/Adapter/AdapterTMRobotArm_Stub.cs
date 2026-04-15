@@ -25,6 +25,12 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
             return true;
         }
 
+        public async Task<bool> GetDeviceIsError(PlcPackage t)
+        {
+            t.property.getRobot.errorCode = 0;
+            return true;
+        }
+
         public async Task<bool> SetRobotMissionInform(PlcPackage t)
         {
             return true;

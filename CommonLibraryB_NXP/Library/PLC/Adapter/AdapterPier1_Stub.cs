@@ -37,6 +37,12 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
             return true;
         }
 
+        public async Task<bool> GetDeviceIsError(PlcPackage t)
+        {
+            t.property.getPier.errorCode = 0;
+            return true;
+        }
+
         public async Task<bool> SetPierMissionStart(PlcPackage t)
         {
             missionAction = t.property.setPier.missionStart;

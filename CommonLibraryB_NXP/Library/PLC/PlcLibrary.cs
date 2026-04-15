@@ -121,5 +121,10 @@ namespace CommonLibraryB_NXP.Library.PLC
         {
             return await SelectAdapter(t).GetWarehouse(Packages[t]);
         }
+
+        public async Task<bool> GetDeviceIsError(T t)
+        {
+            return await SelectAdapter(t).GetDeviceIsError(Packages[t]);
+        }
     }
 }

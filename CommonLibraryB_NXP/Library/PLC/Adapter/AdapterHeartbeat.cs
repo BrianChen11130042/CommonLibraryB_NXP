@@ -75,6 +75,11 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
 
     public partial class AdapterHeartbeat
     {
+        public Task<bool> GetDeviceIsError(PlcPackage t)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<bool> GetDeviceIsReady(PlcPackage t)
         {
             throw new NotImplementedException();
