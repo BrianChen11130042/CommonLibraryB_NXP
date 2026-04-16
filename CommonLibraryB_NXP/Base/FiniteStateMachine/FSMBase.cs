@@ -26,7 +26,7 @@ namespace CommonLibraryB_NXP.Base.FiniteStateMachine
     public abstract partial class FSMBase<ES2, ES3>
     {
         public EHandshakeKey key { get; protected set; } = EHandshakeKey.None;
-        public bool isError { get; protected set; }
+        public bool isError { get; protected set; } = false;
         public int interval { get; set; } = 100;
 
 
@@ -105,9 +105,14 @@ namespace CommonLibraryB_NXP.Base.FiniteStateMachine
 
         public void RetrieveState()
         {
-            S1 = RS1;
-            S2 = RS2;
-            S3 = RS3;
+            if(isError)
+            {
+                S1 = RS1;
+                S2 = RS2;
+                S3 = RS3;
+
+                isError = false;
+            }
         }
     }
 }
