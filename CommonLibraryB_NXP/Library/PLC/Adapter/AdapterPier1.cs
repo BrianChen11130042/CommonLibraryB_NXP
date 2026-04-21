@@ -47,7 +47,7 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
             void cmdDeviceError(PlcPackage t)
             {
                 t.station = 1;
-                t.startAddress = 1;
+                t.startAddress = 1224;
                 t.offset = 1;
             }
 
