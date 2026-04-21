@@ -49,7 +49,7 @@ namespace CommonLibraryB_NXP.Library.PLC.Adapter
         void cmdDeviceError(PlcPackage t)
         {
             t.station = 1;
-            t.startAddress = 1226;
+            t.startAddress = 1;
             t.offset = 1;
         }
 
